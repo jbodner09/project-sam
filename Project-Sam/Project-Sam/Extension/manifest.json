@@ -2,7 +2,7 @@
     "name": "Project Sam",
     "short_name": "ProjectSam",
     "version": "0.1.0",
-    "author": "Microsoft",
+    "author": "Saga",
     "background": {
         "page" : "/html/background.html",
         "persistent": true
@@ -19,6 +19,20 @@
             "browser_action_next_to_addressbar": true
         }
     },
+    "content_scripts": [
+        {
+            "matches": [
+                        "<all_urls>"
+                        ],
+            "css": [
+                    "css/content.css"
+                    ],
+            "js": [
+                   "js/content.js"
+                   ],
+            "run_at": "document_start"
+        }
+    ],
     "content_security_policy": "script-src 'self'; object-src 'self'",
     "description": "A friend built into Edge who helps you feel a little better ",
     "icons": {
