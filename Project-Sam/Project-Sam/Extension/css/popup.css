@@ -1,1 +1,6 @@
 body { width:325px; height:578px; }
+
+#chat-bot {
+  height: 300px;
+  width: 100%;
+}
