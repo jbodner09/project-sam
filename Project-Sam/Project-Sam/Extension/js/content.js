@@ -1,10 +1,26 @@
 var ENABLE_SENTIMENT = false;
 
+var browser = (chrome == undefined) ? browser : chrome;
+
+function handleResponse(message)
+{
+    console.log("Message from the background script: " + message.response);
+}
+
+function SendSentimentUpdate(sentiment)
+{
+    browser.runtime.sendMessage(
+    { sentiment: sentiment },
+        handleResponse
+    );
+}
+
 function UpdateSentiment(cogObj)
 {
     var messageId = cogObj.documents[0].id;
     var sentiment = cogObj.documents[0].score;
     console.log(messageId + " sentiment: " + sentiment);
+    SendSentimentUpdate(sentiment);
 }
 
 function AnalyzeSentiment(contentId, text)
@@ -33,6 +49,12 @@ function AnalyzeSentiment(contentId, text)
             }
           ]
         }));
+    }
+    else
+    {
+        // Mock sentiment update
+
+        SendSentimentUpdate(Math.random().toFixed(4));
     }
 }
 
