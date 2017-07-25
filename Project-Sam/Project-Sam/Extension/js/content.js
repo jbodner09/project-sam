@@ -1,15 +1,40 @@
 var ENABLE_SENTIMENT = false;
+var LOOGING_ENABLED = false;
+
+window.browser = window.browser || window.chrome;
+
+function logConsoleMessage(response)
+{
+    if (LOOGING_ENABLED)
+    {
+        console.log(response);
+    }
+}
+
+function handleResponse(message)
+{
+    logConsoleMessage("Message from the background script: " + message.response);
+}
+
+function SendSentimentUpdate(sentiment)
+{
+    browser.runtime.sendMessage(
+    { sentiment: sentiment },
+        handleResponse
+    );
+}
 
 function UpdateSentiment(cogObj)
 {
     var messageId = cogObj.documents[0].id;
     var sentiment = cogObj.documents[0].score;
-    console.log(messageId + " sentiment: " + sentiment);
+    logConsoleMessage(messageId + " sentiment: " + sentiment);
+    SendSentimentUpdate(sentiment);
 }
 
 function AnalyzeSentiment(contentId, text)
 {
-    console.log(contentId + ": " + text);
+    logConsoleMessage(contentId + ": " + text);
     if (ENABLE_SENTIMENT)
     {
         var xhr = new XMLHttpRequest();
@@ -18,10 +43,10 @@ function AnalyzeSentiment(contentId, text)
         xhr.setRequestHeader("Ocp-Apim-Subscription-Key","ASK_RYAN_FOR_THE_KEY_:)");
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
-                console.log(xhr.responseText);
+                logConsoleMessage(xhr.responseText);
                 UpdateSentiment(JSON.parse(xhr.responseText))
             } else {
-                console.log(xhr.responseText);
+                logConsoleMessage(xhr.responseText);
             }
         }
         xhr.send(JSON.stringify({
@@ -33,6 +58,12 @@ function AnalyzeSentiment(contentId, text)
             }
           ]
         }));
+    }
+    else
+    {
+        // Mock sentiment update
+
+        SendSentimentUpdate(Math.random().toFixed(4));
     }
 }
 

@@ -38,6 +38,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Extension\css\botchat.css" />
     <Content Include="Extension\css\options.css" />
     <Content Include="Extension\css\popup.css" />
     <Content Include="Extension\html\background.html" />
@@ -47,7 +48,10 @@
     <Content Include="Extension\images\logo_16x16.png" />
     <Content Include="Extension\images\logo_25x25.png" />
     <Content Include="Extension\images\logo_48x48.png" />
+    <Content Include="Extension\images\sample_intro.jpg" />
     <Content Include="Extension\js\background.js" />
+    <Content Include="Extension\js\botchat.js" />
+    <Content Include="Extension\js\content.js" />
     <Content Include="Extension\js\options.js" />
     <Content Include="Extension\js\popup.js" />
     <Content Include="Extension\manifest.json" />

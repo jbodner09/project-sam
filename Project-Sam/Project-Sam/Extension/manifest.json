@@ -30,7 +30,7 @@
       "run_at": "document_start"
     }
   ],
-  "content_security_policy": "script-src 'self' https://webchat.botframework.com/ https://dev.botframework.com/ https://project-sam-bot.azurewebsites.net https://unpkg.com/botframework-webchat/; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://webchat.botframework.com/ https://dev.botframework.com/ https://project-sam-bot.azurewebsites.net; object-src 'self'",
   "description": "A friend built into Edge who helps you feel a little better ",
   "icons": {
     "16": "/images/logo_16x16.png",
