@@ -1,16 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
   <head>
     <title>Project Sam</title>
+    <link href="https://unpkg.com/botframework-webchat/botchat.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/css/popup.css">
-    <script type="text/javascript" src="/js/popup.js"></script>
+    <script src="https://unpkg.com/botframework-webchat/botchat.js"></script>
   </head>
   <body>
-    <div id="mainBody">
-        <iframe id="chat-window" width="325px" height="578px" src='https://webchat.botframework.com/embed/project-sam?s=KMSunlzj7GA.cwA.IY0.Of3wNsBhf9bWYtWVBO3TaZBV2MiCxyYbCzUkBCPdtqM'></iframe>
-    
-
-    </div>
+      <div id="botChat" class="wc-narrow"></div>
+      <script type="text/javascript" src="/js/popup.js"></script>
   </body>
 </html>
