@@ -1,9 +1,44 @@
-/* Custom styles */
+/****** Custom styles *******/
 .wc-chatview-panel {
-  height: 300px;
-  margin-top: 300px;
+  height: 500px;
+  margin-top: 100px;
 }
 
+/* Feeling Images */
+.wc-card.wc-adaptive-card.hero {
+  width: 70px;
+  float: left;
+  padding-bottom: 8px;
+  margin: 20px 10px 0 0 !important;
+}
+
+.wc-list > .wc-card:last-child {
+  margin: 20px 0 0 0 !important;
+}
+
+.wc-list > .wc-card:first-child {
+  margin: 20 10px 0 0 !important;
+}
+
+.ac-container {
+  padding: 0 !important;
+}
+
+.ac-image img {
+  max-height: 110px !important;
+}
+
+.ac-pushButton {
+  padding: 0 !important;
+  color: #915519 !important;
+  width: 60px !important;
+  font-size: 12px !important;
+  display:inline-block;
+  float: left;
+  margin-left: 5px;
+}
+
+/* Bot chathead image */
 .wc-message-from.wc-message-from-bot {
   background-image: url("../images/logo_25x25.png");
   background-repeat: no-repeat;
@@ -11,17 +46,44 @@
   padding-top: 6px;
 }
 
-.wc-message-from.wc-message-from-bot span, .wc-message-from.wc-message-from-me span {
+/* Bot username and timestamp */
+.wc-message-from.wc-message-from-bot span {
   padding-left: 35px;
   text-transform: uppercase;
-  color: #928f8f;
+  color: #7a3c0c;
   font-weight: bold;
   font-size: 10px;
-  text-shadow: 0 1px white, 1px 0 white;
 }
 
+.wc-message.wc-message-from-bot .format-markdown {
+  color: #7a3c0c;
+}
+
+/* Hide user's username */
+.wc-message-from.wc-message-from-me span {
+  display: none;
+}
+
+/* Entire chat window */
 .wc-message-groups {
-  background-color: #d4ddf8;
+  background-color: #88b8c4 !important;
+  top: 33px !important;
+}
+
+/* User messages */
+.wc-message.wc-message-from-me .wc-message-content {
+  background-color: #6f989e !important;
+}
+
+/* User messages are a different color */
+.wc-message-callout .point-right {
+  fill: #6f989e !important;
+}
+
+/* Chat header */
+.wc-header {
+  background-color: #6f989e !important;
+  height: 25px !important;
 }
 
 /* reset */
