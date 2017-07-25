@@ -1,7 +1,7 @@
 var DEBUG = true;
 var MIN_SENTIMENT_COUNT = 5
 
-var browser = (chrome == undefined) ? browser : chrome;
+window.browser = window.browser || window.chrome;
 
 function handleMessage(request, sender, sendResponse) {
     if (request.sentiment)
@@ -26,7 +26,7 @@ function handleMessage(request, sender, sendResponse) {
                 var avg = sum / sentimentList.length;
 
                 // Alert if dip in average
-                if (avg < .45)
+                if (avg < .28 || (DEBUG && avg < .51)) // September isn't that sad...
                 {
                     browser.storage.local.set({avgSentiment: avg});
                     browser.browserAction.setBadgeText({text: "!"});

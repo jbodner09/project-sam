@@ -1,4 +1,4 @@
-var browser = (chrome == undefined) ? browser : chrome;
+window.browser = window.browser || window.chrome;
 
 var MyWebChat = function(params) {
 

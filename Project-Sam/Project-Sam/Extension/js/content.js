@@ -1,7 +1,7 @@
 var ENABLE_SENTIMENT = false;
 var LOOGING_ENABLED = false;
 
-var browser = (chrome == undefined) ? browser : chrome;
+window.browser = window.browser || window.chrome;
 
 function logConsoleMessage(response)
 {
