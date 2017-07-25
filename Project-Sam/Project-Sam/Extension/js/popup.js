@@ -23,9 +23,32 @@ var MyWebChat = function(params) {
         bot: bot
     }, document.getElementById(params['targetElement']));
 
+    // Local function that can be triggered from event from bot
+    const changeBackgroundColor = (newColor) => {
+        console.log(newColor);
+        document.body.style.backgroundColor = newColor;
+    };
+
+    // Subscribe to event from bot
+    // activity.name matches name passed to createEvent() in bot code
+    botConnection.activity$
+      .filter(activity => activity.type === "event" && activity.name === "changeBackground")
+      .subscribe(activity => changeBackgroundColor(activity.value));
+
+    // Local function that sends event to bot
+    // Captured in bot.on("event") method in bot code and codepath triggered is based on event.name
+    const postButtonMessage = function(){
+        botConnection
+            .postActivity({type: "event", value: "", from: {id: "me" }, name: "buttonClicked"})
+            .subscribe(id => console.log("success"));
+    };
+
+    // Hook up extension code to call local function that triggers bot code
+    document.querySelector("#sendmessage").addEventListener('click', postButtonMessage);
+
     this.loadApplication = function() {
         /**
-         * Sends Web Sentiment parameter to the chatbot 
+         * Sends Web Sentiment parameter to the chatbot
          **/
         var sendWebSentiment = function() {
             console.log('post message');
@@ -44,7 +67,7 @@ var MyWebChat = function(params) {
         sendWebSentiment();
 
         /**
-         * When window unloads send endOfConversation 
+         * When window unloads send endOfConversation
          * This event is catched by the bot that can freeup server resources
          **/
         window.onbeforeunload = function() {
@@ -69,5 +92,8 @@ var webchatParams = {
   s: "7hMseSmbGwY.cwA.2PQ.2aP3gksa4lF1wuanXBkMfsMl5kETQd7c94_QRC8eLNc", // directline
   //s: "KMSunlzj7GA.cwA.IY0.Of3wNsBhf9bWYtWVBO3TaZBV2MiCxyYbCzUkBCPdtqM", // original from iframe
   webSentiment: 0.5
-};   
+};
 new MyWebChat(webchatParams).loadApplication();
+
+// Change chat title
+document.querySelector(".wc-header").querySelector("span").innerHTML = "Sam Chat";

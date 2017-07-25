@@ -1,12 +1,27 @@
 /* Custom styles */
-.wc-message-from.wc-message-from-bot {
-  background-image: url("../images/logo_25x25.png");
-  width: 25px;
-  height: 25px;
+.wc-chatview-panel {
+  height: 300px;
+  margin-top: 300px;
 }
 
-.wc-message-from.wc-message-from-bot span {
-  display: none;
+.wc-message-from.wc-message-from-bot {
+  background-image: url("../images/logo_25x25.png");
+  background-repeat: no-repeat;
+  height: 25px;
+  padding-top: 6px;
+}
+
+.wc-message-from.wc-message-from-bot span, .wc-message-from.wc-message-from-me span {
+  padding-left: 35px;
+  text-transform: uppercase;
+  color: #928f8f;
+  font-weight: bold;
+  font-size: 10px;
+  text-shadow: 0 1px white, 1px 0 white;
+}
+
+.wc-message-groups {
+  background-color: #d4ddf8;
 }
 
 /* reset */
