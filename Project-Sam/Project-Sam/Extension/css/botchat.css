@@ -1,9 +1,4 @@
 /****** Custom styles *******/
-.wc-chatview-panel {
-  height: 500px;
-  margin-top: 100px;
-}
-
 /* Feeling Images */
 .wc-card.wc-adaptive-card.hero {
   width: 70px;
@@ -40,10 +35,13 @@
 
 /* Bot chathead image */
 .wc-message-from.wc-message-from-bot {
-  background-image: url("../images/logo_25x25.png");
+  background-image: url("https://github.com/isabellacmor/sam-bot/blob/master/images/Circle.png?raw=true");
   background-repeat: no-repeat;
   height: 25px;
   padding-top: 6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
 }
 
 /* Bot username and timestamp */
@@ -53,6 +51,7 @@
   color: #7a3c0c;
   font-weight: bold;
   font-size: 10px;
+  display: none;
 }
 
 .wc-message.wc-message-from-bot .format-markdown {
