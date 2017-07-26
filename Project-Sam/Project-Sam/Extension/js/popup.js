@@ -1,5 +1,13 @@
 window.browser = window.browser || window.chrome;
 
+var getRandomInt = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var cuteVideos = ["https://www.youtube.com/watch?v=mRf3-JkwqfU", "https://www.youtube.com/watch?v=R0Te9mA7baA", "https://www.youtube.com/watch?v=FBFYV7y_D-E", "https://www.youtube.com/watch?v=UTsBJWgxwQA"];
+var happyMusic = ["https://www.youtube.com/watch?v=Gs069dndIYk", "https://www.youtube.com/watch?v=ZbZSe6N_BXs", "https://www.youtube.com/watch?v=3GwjfUFyY6M", "https://www.youtube.com/watch?v=n6RTF4OPzf8", "https://www.youtube.com/watch?v=d-diB65scQU", "https://www.youtube.com/watch?v=Tvu3xiFmfDU"];
+
+
 var MyWebChat = function(params) {
 
     // Webchat client args
@@ -43,13 +51,13 @@ var MyWebChat = function(params) {
 
     const playMusic = (song) => {
         console.log(song);
-        openTab("https://www.youtube.com/watch?v=Gs069dndIYk");
-        // happy pharell
-        // celebrate
-        // one more time?
-        // don't worry be happy
-        // happy together
+        openTab(happyMusic[getRandomInt(0, happyMusic.length-1)]);
 
+    };
+
+    const playVideo = (video) => {
+        console.log(video);
+        openTab(cuteVideos[getRandomInt(0, cuteVideos.length-1)]);
     };
 
     // Subscribe to event from bot
@@ -67,6 +75,11 @@ var MyWebChat = function(params) {
     botConnection.activity$
       .filter(activity => activity.type === "event" && activity.name === "playMusic")
       .subscribe(activity => playMusic(activity.value));
+
+    // Launch Groove with music (or youtube video)
+    botConnection.activity$
+      .filter(activity => activity.type === "event" && activity.name === "playVideo")
+      .subscribe(activity => playVideo(activity.value));
 
     // Local function that sends event to bot
     // Captured in bot.on("event") method in bot code and codepath triggered is based on event.name
