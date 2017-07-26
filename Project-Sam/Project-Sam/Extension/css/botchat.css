@@ -7,12 +7,26 @@
   margin: 20px 10px 0 0 !important;
 }
 
-.wc-list > .wc-card:last-child {
+.wc-list > .wc-card.hero:last-child {
   margin: 20px 0 0 0 !important;
 }
 
-.wc-list > .wc-card:first-child {
+.wc-list > .wc-card.hero:first-child {
   margin: 20 10px 0 0 !important;
+}
+
+/* OOBE card */
+.wc-card.wc-adaptive-card.animation {
+  padding: 10px;
+}
+
+.wc-card.wc-adaptive-card.animation .ac-container div p {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.wc-card.wc-adaptive-card.animation .ac-container p {
+  margin-bottom: 10px;
 }
 
 .ac-container {

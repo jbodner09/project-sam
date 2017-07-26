@@ -109,20 +109,12 @@ var MyWebChat = function(params) {
 
     this.loadApplication = function() {
 
-        // Start bot with correct flow
-        localStorage.removeItem("username");
-        if(localStorage.getItem("username")) {
-          postStartState(localStorage.getItem("username")); // logged in
-
-          // Trigger webSentiment
-          if (params['webSentiment'] < 1.0)
-          {
-              postWebSentiment(params['webSentiment']);
-          }
-        } else {
-          postStartState(null); // not logged in
+        // Trigger webSentiment
+        if (params['webSentiment'] < 1.0)
+        {
+            postWebSentiment(params['webSentiment']);
         }
-
+    
         /**
          * When window unloads send endOfConversation
          * This event is catched by the bot that can freeup server resources
