@@ -1,4 +1,4 @@
-var ENABLE_SENTIMENT = false;
+var ENABLE_SENTIMENT = true;
 var LOOGING_ENABLED = false;
 
 window.browser = window.browser || window.chrome;
@@ -40,7 +40,7 @@ function AnalyzeSentiment(contentId, text)
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment", true);
         xhr.setRequestHeader("Content-Type","application/json");
-        xhr.setRequestHeader("Ocp-Apim-Subscription-Key","ASK_RYAN_FOR_THE_KEY_:)");
+        xhr.setRequestHeader("Ocp-Apim-Subscription-Key","336016cf9a47484abe59ec8e69ab3962");
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 logConsoleMessage(xhr.responseText);

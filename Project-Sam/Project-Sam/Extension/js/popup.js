@@ -80,24 +80,13 @@ var MyWebChat = function(params) {
     botConnection.activity$
       .filter(activity => activity.type === "event" && activity.name === "playVideo")
       .subscribe(activity => playVideo(activity.value));
-
-    // Local function that sends event to bot
-    // Captured in bot.on("event") method in bot code and codepath triggered is based on event.name
-    const postButtonMessage = function(){
-        botConnection
-            .postActivity({type: "event", value: "", from: {id: params['userid'] }, name: "buttonClicked"})
-            .subscribe(id => console.log("buttonClicked success"));
-    };
-
+  
     // Send web sentiment value to bot
     const postWebSentiment = function(avgWebSentiment){
         botConnection
             .postActivity({type: "event", value: avgWebSentiment, from: {id: params['userid'] }, name: "webSentiment"})
             .subscribe(id => console.log("webSentiment success"));
     };
-
-    // Hook up extension code to call local function that triggers bot code
-    document.querySelector("#sendmessage").addEventListener('click', postButtonMessage);
 
     this.loadApplication = function() {
 
