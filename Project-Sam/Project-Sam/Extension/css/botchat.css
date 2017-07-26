@@ -1,4 +1,10 @@
 /****** Custom styles *******/
+
+/* Hide media controls for "Animation" card */
+video::-webkit-media-controls {
+  display: none;
+}
+
 /* Feeling Images */
 .wc-card.wc-adaptive-card.hero {
   width: 70px;
@@ -21,8 +27,7 @@
 }
 
 .wc-card.wc-adaptive-card.animation .ac-container div p {
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin: 10px 0 5px 0 !important;
 }
 
 .wc-card.wc-adaptive-card.animation .ac-container p {
@@ -62,14 +67,16 @@
 .wc-message-from.wc-message-from-bot span {
   padding-left: 35px;
   text-transform: uppercase;
-  color: #7a3c0c;
+  color: rgb(83, 95, 103);
   font-weight: bold;
   font-size: 10px;
   display: none;
 }
 
 .wc-message.wc-message-from-bot .format-markdown {
-  color: #7a3c0c;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(83, 95, 103);
 }
 
 /* Hide user's username */
