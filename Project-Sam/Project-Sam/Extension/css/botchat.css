@@ -40,7 +40,7 @@
 
 /* Bot chathead image */
 .wc-message-from.wc-message-from-bot {
-  background-image: url("../images/logo_25x25.png");
+  background-image: url("https://github.com/isabellacmor/sam-bot/blob/master/images/Circle.png?raw=true");
   background-repeat: no-repeat;
   height: 25px;
   padding-top: 6px;
