@@ -110,18 +110,19 @@ var MyWebChat = function(params) {
     this.loadApplication = function() {
 
         // Start bot with correct flow
-        localStorage.removeItem("username");
-        if(localStorage.getItem("username")) {
-          postStartState(localStorage.getItem("username")); // logged in
+        // localStorage.removeItem("username");
+        // if(localStorage.getItem("username")) {
+        //   postStartState(localStorage.getItem("username")); // logged in
 
           // Trigger webSentiment
           if (params['webSentiment'] < 1.0)
           {
               postWebSentiment(params['webSentiment']);
           }
-        } else {
-          postStartState(null); // not logged in
-        }
+        // }
+        // else {
+        //   postStartState(null); // not logged in
+        // }
 
         /**
          * When window unloads send endOfConversation
