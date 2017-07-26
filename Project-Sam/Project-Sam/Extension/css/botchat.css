@@ -74,7 +74,7 @@
 
 /* Hide user's username */
 .wc-message-from.wc-message-from-me span {
-  /*display: none;*/
+  display: none;
 }
 
 /* Entire chat window */
