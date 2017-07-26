@@ -42,11 +42,3 @@ function handleMessage(request, sender, sendResponse) {
 }
 
 browser.runtime.onMessage.addListener(handleMessage);
-
-function initializeOOBE(details) {
-    if (details.reason == "install") {
-        browser.storage.local.set({"oobeFlow": "oobeStart"});
-    }
-}
-
-browser.runtime.onInstalled.addListener(initializeOOBE);
