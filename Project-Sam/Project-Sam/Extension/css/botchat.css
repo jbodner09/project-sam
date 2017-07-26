@@ -44,6 +44,9 @@
   background-repeat: no-repeat;
   height: 25px;
   padding-top: 6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
 }
 
 /* Bot username and timestamp */
@@ -53,6 +56,7 @@
   color: #7a3c0c;
   font-weight: bold;
   font-size: 10px;
+  display: none;
 }
 
 .wc-message.wc-message-from-bot .format-markdown {
