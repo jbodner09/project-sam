@@ -1,12 +1,13 @@
 window.browser = window.browser || window.chrome;
 
+// Gets random number in range, inclusive both ends.
 var getRandomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Music and videos to randomize for user
 var cuteVideos = ["https://www.youtube.com/watch?v=mRf3-JkwqfU", "https://www.youtube.com/watch?v=R0Te9mA7baA", "https://www.youtube.com/watch?v=FBFYV7y_D-E", "https://www.youtube.com/watch?v=UTsBJWgxwQA"];
 var happyMusic = ["https://www.youtube.com/watch?v=Gs069dndIYk", "https://www.youtube.com/watch?v=ZbZSe6N_BXs", "https://www.youtube.com/watch?v=3GwjfUFyY6M", "https://www.youtube.com/watch?v=n6RTF4OPzf8", "https://www.youtube.com/watch?v=d-diB65scQU", "https://www.youtube.com/watch?v=Tvu3xiFmfDU"];
-
 
 var MyWebChat = function(params) {
 
@@ -60,6 +61,12 @@ var MyWebChat = function(params) {
         openTab(cuteVideos[getRandomInt(0, cuteVideos.length-1)]);
     };
 
+    const updateName = (name) => {
+        console.log(name);
+        user.username = name;
+        localStorage.setItem("username", name);
+    };
+
     // Subscribe to event from bot
     // activity.name matches name passed to createEvent() in bot code
     botConnection.activity$
@@ -80,7 +87,12 @@ var MyWebChat = function(params) {
     botConnection.activity$
       .filter(activity => activity.type === "event" && activity.name === "playVideo")
       .subscribe(activity => playVideo(activity.value));
-  
+
+    // Update username in localStorage and user property
+    botConnection.activity$
+      .filter(activity => activity.type === "event" && activity.name === "updateName")
+      .subscribe(activity => updateName(activity.value));
+
     // Send web sentiment value to bot
     const postWebSentiment = function(avgWebSentiment){
         botConnection
@@ -88,11 +100,27 @@ var MyWebChat = function(params) {
             .subscribe(id => console.log("webSentiment success"));
     };
 
+    // Send start state to bot
+    const postStartState = function(state){
+        botConnection
+            .postActivity({type: "event", value: state, from: {id: params['userid'] }, name: "startState"})
+            .subscribe(id => console.log("start state success"));
+    };
+
     this.loadApplication = function() {
 
-        if (params['webSentiment'] < 1.0)
-        {
-            postWebSentiment(params['webSentiment']);
+        // Start bot with correct flow
+        localStorage.removeItem("username");
+        if(localStorage.getItem("username")) {
+          postStartState(localStorage.getItem("username")); // logged in
+
+          // Trigger webSentiment
+          if (params['webSentiment'] < 1.0)
+          {
+              postWebSentiment(params['webSentiment']);
+          }
+        } else {
+          postStartState(null); // not logged in
         }
 
         /**
@@ -126,7 +154,7 @@ function initWebChat(sentiment)
 
     new MyWebChat(webchatParams).loadApplication();
 
-        // Change chat title
+    // Change chat title
     document.querySelector(".wc-header").querySelector("span").innerHTML = "Sam Chat";
 }
 
