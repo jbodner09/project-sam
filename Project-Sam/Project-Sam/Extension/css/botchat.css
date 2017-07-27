@@ -1,10 +1,5 @@
 /****** Custom styles *******/
 
-/* Hide media controls for "Animation" card */
-video::-webkit-media-controls {
-  display: none;
-}
-
 /* Feeling Images */
 .wc-card.wc-adaptive-card.hero {
   width: 70px;
@@ -22,15 +17,26 @@ video::-webkit-media-controls {
 }
 
 /* OOBE card */
-.wc-card.wc-adaptive-card.animation {
+.wc-card.wc-adaptive-card {
   padding: 10px;
 }
 
-.wc-card.wc-adaptive-card.animation .ac-container div p {
+.wc-card.wc-adaptive-card div {
+  white-space: normal !important;
+  color: rgb(83, 95, 103) !important;
+}
+
+.wc-card.wc-adaptive-card > .ac-container > .ac-image > img {
+  max-height: 200px !important;
+  max-width: 200px !important;
+  margin-left: 10px;
+}
+
+.wc-card.wc-adaptive-card .ac-container div p {
   margin: 10px 0 5px 0 !important;
 }
 
-.wc-card.wc-adaptive-card.animation .ac-container p {
+.wc-card.wc-adaptive-card. .ac-container p {
   margin-bottom: 10px;
 }
 
@@ -44,7 +50,7 @@ video::-webkit-media-controls {
 
 .ac-pushButton {
   padding: 0 !important;
-  color: #915519 !important;
+  color: rgb(83, 95, 103) !important;
   width: 60px !important;
   font-size: 12px !important;
   display:inline-block;
