@@ -171,9 +171,220 @@ function startChat(initChatFunction)
     startChatWithWebSentiment(initChatFunction);
 }
 
-function showFlyout(e)
-{
-    startChat(initWebChat);
+function previousButtonClick(currentPage) {
+    switch (currentPage) {
+        case "oobePets":
+            var newPage = "oobeStart";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeMusic":
+            var newPage = "oobePets";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeTV":
+            var newPage = "oobeMusic";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeHobbies":
+            var newPage = "oobeTV";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeFood":
+            var newPage = "oobeHobbies";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeFeelings":
+            var newPage = "oobeFood";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeContacts":
+            var newPage = "oobeFeelings";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeFinish":
+            var newPage = "oobeContacts";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+    }
+}
+
+function nextButtonClick(currentPage) {
+    switch (currentPage) {
+        case "oobeStart":
+            var newPage = "oobePets";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobePets":
+            var newPage = "oobeMusic";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeMusic":
+            var newPage = "oobeTV";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeTV":
+            var newPage = "oobeHobbies";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeHobbies":
+            var newPage = "oobeFood";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeFood":
+            var newPage = "oobeFeelings";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeFeelings":
+            var newPage = "oobeContacts";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeContacts":
+            var newPage = "oobeFinish";
+            browser.storage.local.set({ "oobeFlow": newPage });
+            createOOBE(newPage);
+            break;
+        case "oobeFinish":
+            document.body.style.backgroundColor = "white";
+            browser.storage.local.set({ "oobeFlow": "main" });
+            startChat(initWebChat);
+            break;
+    }
+}
+
+function createOOBE(oobePage) {
+    var contentDiv = document.getElementById("botChat");
+    document.body.style.backgroundColor = "rgb(136, 184, 196)";
+    console.log("Creating OOBE page " + oobePage);
+    switch (oobePage) {
+        case "oobeStart": // Page 1 of OOBE, greet the user and get their name
+            contentDiv.innerHTML = `
+                                    Hello! What's your name?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobePets": // Page 2 of OOBE, get their gender and their favorite type of animal
+            contentDiv.innerHTML = `
+                                    Are you a cat person or a dog person?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobeMusic": // Page 3 of OOBE, get their favorite music genre and artists
+            contentDiv.innerHTML = `
+                                    What do you like to listen to?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobeTV": // Page 4 of OOBE, get their favorite TV shows and movies
+            contentDiv.innerHTML = `
+                                    What do you like to watch?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobeHobbies": // Page 5 of OOBE, get their hobbies and their job
+            contentDiv.innerHTML = `
+                                    What do you do for a living?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobeFood": // Page 6 of OOBE, get their favorite food and sports
+            contentDiv.innerHTML = `
+                                    What do you like to eat?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobeFeelings": // Page 7 of OOBE, get some general likes and dislikes
+            contentDiv.innerHTML = `
+                                    What makes you happy or sad?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobeContacts": // Page 8 of OOBE, set up contacts
+            contentDiv.innerHTML = `
+                                    Do you want me to contact anybody?<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        case "oobeFinish": // Page 9 of OOBE, final greeting
+            contentDiv.innerHTML = `
+                                    Click here to chat!<br />
+                                    <br />
+                                    <input type="text"></input><br />
+                                    <input type="button" id="previousButton">previous</input>
+                                    <input type="button" id="nextButton">next</input>
+                                    `;
+            document.getElementById("previousButton").addEventListener("click", function () { previousButtonClick(oobePage); });
+            document.getElementById("nextButton").addEventListener("click", function () { nextButtonClick(oobePage); });
+            break;
+        default: // If we don't know which OOBE page to show, just show the main chat box
+            document.body.style.backgroundColor = "white";
+            browser.storage.local.set({ "oobeFlow": "main" });
+            startChat(initWebChat);
+            break;
+    }
+}
+
+function showFlyout(e) {
+    browser.storage.local.get("oobeFlow", function (items) {
+        if (items && items.oobeFlow && items.oobeFlow == "main") {
+            startChat(initWebChat);
+        }
+        else {
+            createOOBE(items.oobeFlow);
+        }
+    })
 };
 
 window.addEventListener("DOMContentLoaded", showFlyout);
