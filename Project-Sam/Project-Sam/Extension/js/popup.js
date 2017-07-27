@@ -171,7 +171,9 @@ function startChat(initChatFunction)
     startChatWithWebSentiment(initChatFunction);
 }
 
-window.onload = function()
+function showFlyout(e)
 {
     startChat(initWebChat);
 };
+
+window.addEventListener("DOMContentLoaded", showFlyout);
