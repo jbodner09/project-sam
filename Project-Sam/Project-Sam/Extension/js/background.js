@@ -1,4 +1,4 @@
-var DEBUG = true;
+var DEBUG = false;
 var MIN_SENTIMENT_COUNT = 5
 
 window.browser = window.browser || window.chrome;
