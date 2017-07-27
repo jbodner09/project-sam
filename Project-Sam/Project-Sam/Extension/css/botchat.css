@@ -1,4 +1,5 @@
 /****** Custom styles *******/
+
 /* Feeling Images */
 .wc-card.wc-adaptive-card.hero {
   width: 70px;
@@ -16,16 +17,26 @@
 }
 
 /* OOBE card */
-.wc-card.wc-adaptive-card.animation {
+.wc-card.wc-adaptive-card {
   padding: 10px;
 }
 
-.wc-card.wc-adaptive-card.animation .ac-container div p {
-  margin-top: 10px;
-  margin-bottom: 5px;
+.wc-card.wc-adaptive-card div {
+  white-space: normal !important;
+  color: rgb(83, 95, 103) !important;
 }
 
-.wc-card.wc-adaptive-card.animation .ac-container p {
+.wc-card.wc-adaptive-card > .ac-container > .ac-image > img {
+  max-height: 200px !important;
+  max-width: 200px !important;
+  margin-left: 10px;
+}
+
+.wc-card.wc-adaptive-card .ac-container div p {
+  margin: 10px 0 5px 0 !important;
+}
+
+.wc-card.wc-adaptive-card. .ac-container p {
   margin-bottom: 10px;
 }
 
@@ -39,7 +50,7 @@
 
 .ac-pushButton {
   padding: 0 !important;
-  color: #915519 !important;
+  color: rgb(83, 95, 103) !important;
   width: 60px !important;
   font-size: 12px !important;
   display:inline-block;
@@ -62,14 +73,16 @@
 .wc-message-from.wc-message-from-bot span {
   padding-left: 35px;
   text-transform: uppercase;
-  color: #7a3c0c;
+  color: rgb(83, 95, 103);
   font-weight: bold;
   font-size: 10px;
   display: none;
 }
 
 .wc-message.wc-message-from-bot .format-markdown {
-  color: #7a3c0c;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(83, 95, 103);
 }
 
 /* Hide user's username */
